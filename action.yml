@@ -19,7 +19,8 @@ runs:
       shell: bash
     - run: echo "${{ github.action_path }}" >> $GITHUB_PATH
       shell: bash
-    - run: |
+    - id: my-stuff
+      run: |
         result=$(curl -k -X 'POST' "https://testing.blackduck.synopsys.com/api/tokens/authenticate" -H 'Accept: application/vnd.blackducksoftware.user-4+json' -H "Authorization: token ZWI3ZGZlZmItMTlkMS00ODk0LWI1ZTYtY2EwMWNmZjFiMmNmOjM0YWM0N2NhLWI3ZWEtNGE5My05Yjg5LWZlZDdiYTQ2MTE4Zg==")
         echo Result is $result
       shell: bash

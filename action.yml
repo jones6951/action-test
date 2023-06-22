@@ -12,8 +12,6 @@ outputs:
 runs:
   using: "composite"
   steps:
-    - run: apt install jq
-      shell: bash
     - id: random-number-generator
       run: echo "random-number=$(echo $RANDOM)" >> $GITHUB_OUTPUT
       shell: bash

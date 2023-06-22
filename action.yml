@@ -1,5 +1,5 @@
-name: 'Hello World'
-description: 'Greet someone'
+name: 'Black Duck SBOM'
+description: 'Generate a Black Duck SBOM report'
 inputs:
   who-to-greet:  # id of input
     description: 'Who to greet'
@@ -23,7 +23,8 @@ runs:
         projectVersion=1.0.0
         bearerToken=$(curl -k -s -X POST https://testing.blackduck.synopsys.com/api/tokens/authenticate -H 'Accept: application/vnd.blackducksoftware.user-4+json' -H "Authorization: token ZWI3ZGZlZmItMTlkMS00ODk0LWI1ZTYtY2EwMWNmZjFiMmNmOjM0YWM0N2NhLWI3ZWEtNGE5My05Yjg5LWZlZDdiYTQ2MTE4Zg==" | cut -d '"' -f 4)
         echo Token is $bearerToken
-        reportID=$(curl -k -s -X POST https://testing.blackduck.synopsys.com/api/projects/$projectID/versions/$projectVersion/sbom-reports -H "Authorization: bearer $bearerToken" -H "Content-Type: application/vnd.blackducksoftware.report-4+json")
+        reportID=$(curl -k -s -X POST https://testing.blackduck.synopsys.com/api/projects/$projectID/versions/$projectVersion/sbom-reports -H "Authorization: bearer $bearerToken")
         echo Report is $reportID
+        echo -H "Content-Type: application/vnd.blackducksoftware.report-4+json")
       shell: bash
 

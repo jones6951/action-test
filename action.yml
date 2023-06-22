@@ -14,6 +14,7 @@ runs:
   steps:
     - id: test
       run: echo "Testing" | jq
+      shell: bash
     - id: random-number-generator
       run: echo "random-number=$(echo $RANDOM)" >> $GITHUB_OUTPUT
       shell: bash

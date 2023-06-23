@@ -1,24 +1,25 @@
+name: BlackDuck SBOM Example
 on: [push]
-
 jobs:
-  hello_world_job:
+  BlackDuckSBOM:
     runs-on: ubuntu-latest
-    name: A job to say hello
     steps:
-      - uses: philips-software/blackduck-report-action@v0.3
-      id: blackduck-report
-      with:
-        blackduck-url: https://testing.blackduck.synopsys.com
-        blackduck-token: ${{ secrets.BLACKDUCK_TOKEN }}
-        project: MJ-jhipster
-        version: 0.0.1
+      - name: Generate SBOM
+        uses: philips-software/blackduck-report-action@v0.3
+
+        id: blackduck-report
+        with:
+          blackduck-url: https://testing.blackduck.synopsys.com
+          blackduck-token: ${{ secrets.BLACKDUCK_TOKEN }}
+          project: MJ-jhipster
+          version: 0.0.1
 
       - name: show content - Be careful... sboms are huge.. this might cause some problems with io on GitHub.
-      run: echo ${{steps.blackduck-report.outputs.sbom-contents}}
+        run: echo ${{steps.blackduck-report.outputs.sbom-contents}}
 
       - name: Upload artifact
-      uses: actions/upload-artifact@3cea5372237819ed00197afe530f5a7ea3e805c8
-      with:
-        name: sbom-report
-        path: ${{steps.blackduck-report.outputs.sbom-file}}
-        retention-days: 7
+        uses: actions/upload-artifact@3cea5372237819ed00197afe530f5a7ea3e805c8
+        with:
+          name: sbom-report
+          path: ${{steps.blackduck-report.outputs.sbom-file}}
+          retention-days: 7

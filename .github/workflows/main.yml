@@ -14,9 +14,6 @@ jobs:
           blackduck-token: ${{ secrets.BLACKDUCK_TOKEN }}
           project: MJ-jhipster
           version: 1.0.0
-      - name: show content - Be careful... sboms are huge.. this might cause some
-          problems with io on GitHub.
-        run: echo ${{steps.blackduck-report.outputs.sbom-contents}}
       - name: Upload artifact
         uses: actions/upload-artifact@3cea5372237819ed00197afe530f5a7ea3e805c8
         with:

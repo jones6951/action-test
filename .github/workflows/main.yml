@@ -13,7 +13,7 @@ jobs:
           blackduck-url: https://testing.blackduck.synopsys.com
           blackduck-token: ${{ secrets.BLACKDUCK_TOKEN }}
           project: MJ-jhipster
-          version: 0.0.1
+          version: 1.0.0
       - name: show content - Be careful... sboms are huge.. this might cause some
           problems with io on GitHub.
         run: echo ${{steps.blackduck-report.outputs.sbom-contents}}
